@@ -10,9 +10,8 @@ from api.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/home/', CheckListsAPIView.as_view()),
-    path('api/home/<int:pk>/', CheckListAPIView.as_view()),
-    path('api/home/create/', CheckListItemCreateAPIView.as_view()),
-    path('api/home/checklistItem/<int:pk>/', CheckListItemAPIView.as_view()),
-    
+    path('', CheckListsAPIView.as_view()),
+    path('<int:pk>/', CheckListAPIView.as_view()),
+    path('create/', CheckListItemCreateAPIView.as_view()),
+    path('item/<int:pk>/', CheckListItemAPIView.as_view()),    
 ]

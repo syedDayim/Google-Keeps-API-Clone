@@ -1,12 +1,17 @@
 from rest_framework import serializers
 from .models import CheckList, CheckListItem
 
-class CheckListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CheckList
-        fields = "__all__"
-
 class CheckListItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = CheckListItem
         fields = "__all__"
+
+
+
+class CheckListSerializer(serializers.ModelSerializer):
+    item = CheckListItemSerializer(source="checklistitem_set", many=True, read_only=True)
+    
+    class Meta:
+        model = CheckList
+        fields = "__all__"
+
